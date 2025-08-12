@@ -7,7 +7,7 @@
 ]]
 
 if getgenv().library then 
-    getgenv().library:unload()
+    getgenv().library:unload_menu()
 end
 
 -- Variables 
