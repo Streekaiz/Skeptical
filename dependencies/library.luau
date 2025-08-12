@@ -6,8 +6,8 @@
     -> Idk who or why this got leaked, ui was VERY popular and high in demand with customers
 ]]
 
-if library then 
-    library:unload()
+if getgenv().library then 
+    getgenv().library:unload()
 end
 
 -- Variables 
