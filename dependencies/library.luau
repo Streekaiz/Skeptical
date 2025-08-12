@@ -6,6 +6,10 @@
     -> Idk who or why this got leaked, ui was VERY popular and high in demand with customers
 ]]
 
+if library then 
+    library:unload()
+end
+
 -- Variables 
     local uis = game:GetService("UserInputService") 
     local players = game:GetService("Players") 
