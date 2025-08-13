@@ -132,7 +132,7 @@ end
 
  Library.GetClosestBodyPart = function(self, Character : Model, List : {[any] : Part})
     local Mouse = UserInputService:GetMouseLocation() 
-    local ClosestPart, PartMagnitude = nil, MathHuge 
+    local ClosestPart, PartMagnitude = nil, math.huge
 
         for _, Object in next, Character:GetChildren() do 
             if Object:IsA("BasePart") then 
