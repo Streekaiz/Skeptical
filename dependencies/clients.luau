@@ -130,7 +130,7 @@ Library.GetClosestPlayer = function(self, Mode : string, Validation : (any)) : P
     return Target, Magnitude, Data 
 end 
 
-Library.GetClosestPart = function(self, Mode : string, Character : Model) : BasePart 
+Library.GetClosestPart = function(self, Mode : string, Character : Model, List : {any}) : BasePart 
     Mode = Mode or "Mouse" -- // Mouse, Character 
     Validation = Validation or function() 
         return true 

@@ -614,7 +614,7 @@ local Library do
                         end
                     end)
                 end
-            end)
+            end) 
 
             Library:Connect(UserInputService.InputChanged, function(Input)
                 if Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch then
