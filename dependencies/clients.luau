@@ -130,33 +130,23 @@ Library.GetClosestPlayer = function(self, Mode : string, Validation : (any)) : P
     return Target, Magnitude, Data 
 end 
 
-Library.GetClosestPart = function(self, Mode : string, Character : Model, List : {any}) : BasePart 
-    Mode = Mode or "Mouse" -- // Mouse, Character 
-    Validation = Validation or function() 
-        return true 
+ Library.GetClosestBodyPart = function(self, Character : Model, List : {[any] : Part})
+    local Mouse = UserInputService:GetMouseLocation() 
+    local ClosestPart, PartMagnitude = nil, MathHuge 
+
+        for _, Object in next, Character:GetChildren() do 
+            if Object:IsA("BasePart") then 
+                local Position = Camera:WorldToViewportPoint(Object.Position)
+                local Magnitude = (Vector2.new(Position.X, Position.Y) - Mouse).Magnitude
+
+                if Magnitude < PartMagnitude and table.find(List, Object) then 
+                    ClosestPart = Object 
+                    PartMagnitude = Magnitude
+                end
+            end
+        end
+
+        return ClosestPart, PartMagnitude 
     end
-
-    local Mouse : Vector2 = UserInputService:GetMouseLocation()
-
-    local Target : Player = nil 
-    local Magnitude : number = math.huge  
-    local Data : {[any] : any}
-
-    for Index, Part in next, Character:GetChildren() do 
-        if not Part:IsA("BasePart") then 
-            continue 
-        end 
-
-        local Positon = Camera:WorldToViewportPoint(Part.Position)
-        local PartMagnitude = (Vector2.new(Position.X, Position.Y) - Mouse).Magnitude
-
-        if Magnitude > PartMagnitude and TableFind(List, Object) then
-			Target = Part
-			Magnitude = PartMagnitude
-		end
-    end 
-
-    return Target, Magnitude 
-end 
 
 return Library
